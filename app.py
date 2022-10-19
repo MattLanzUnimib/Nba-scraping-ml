@@ -11,7 +11,7 @@ import pandas as pd
 import requests
 import json
 import datetime as dt
-import pyrebase
+import pyrebase4
 
 params_boxscore= {
     "Season": "2022-23",
