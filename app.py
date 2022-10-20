@@ -195,6 +195,15 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
 }
 
+def send_tg_message(text='Cell execution completed.'):
+    tg_api_token = '5666255442:AAEShCrys0IwhCYQt1HQsl-YUj7Mi21RQPI'
+    tg_chat_id = '925353088'
+    requests.post(
+        'https://api.telegram.org/' +
+        'bot{}/sendMessage'.format(tg_api_token), 
+        params=dict(chat_id=tg_chat_id, text=text)
+    )
+
 def Get_data(url, header, params):
   response = requests.get(url, headers=header, params=params)
   file = response.json()
@@ -285,5 +294,6 @@ def scheduler():
     # Trigger scraper function everyday on 12 AM
     if current_time == "12:00:00":   
         stats_scraper()
+        send_tg_message(text="Today's games data pushed to database")
 
 scheduler()
